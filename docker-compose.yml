@@ -1,4 +1,4 @@
-name: cham-coffee
+name: nova-store
 
 services:
   db:
@@ -61,7 +61,7 @@ services:
   # Các mục đích sử dụng:
   # - Cài đặt WordPress tự động.
   # - Cài và kích hoạt WooCommerce.
-  # - Kích hoạt cham-theme và cham-review-bridge.
+  # - Kích hoạt nova-theme và nova-review-bridge.
   # - Cấu hình permalink, trang Shop, Cart và Checkout.
   # - Tạo danh mục, sản phẩm và review demo.
   # - Chạy các script bootstrap/seed lặp lại được.

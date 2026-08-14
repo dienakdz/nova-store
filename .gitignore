@@ -20,13 +20,13 @@
 /app/wp-content/plugins/*
 
 # Chỉ commit plugin do dự án viết.
-!/app/wp-content/plugins/cham-review-bridge/
+!/app/wp-content/plugins/nova-review-bridge/
 
 # Bỏ qua theme mặc định và theme tải ngoài.
 /app/wp-content/themes/*
 
 # Chỉ commit theme do dự án viết.
-!/app/wp-content/themes/cham-theme/
+!/app/wp-content/themes/nova-theme/
 
 # Log, database dump và file backup local.
 *.log

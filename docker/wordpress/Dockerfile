@@ -14,4 +14,4 @@ COPY certs/ /usr/local/share/ca-certificates/
 
 RUN update-ca-certificates
 
-COPY php/custom.ini /usr/local/etc/php/conf.d/cham-coffee.ini
+COPY php/custom.ini /usr/local/etc/php/conf.d/nova-store.ini
