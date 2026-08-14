@@ -1,0 +1,94 @@
+name: cham-coffee
+
+services:
+  db:
+    image: mariadb:11.4.12
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test:
+        - CMD
+        - healthcheck.sh
+        - --connect
+        - --innodb_initialized
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  wordpress:
+    build:
+      context: ./docker/wordpress
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-1}
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'WP_ENVIRONMENT_TYPE', 'local' );
+        define( 'WP_DEBUG_LOG', true );
+        define( 'WP_DEBUG_DISPLAY', false );
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - "${WORDPRESS_PORT:-8080}:80"
+
+  # WP-CLI là công cụ quản trị WordPress bằng command line.
+  #
+  # Service này KHÔNG chạy thường trực và không phục vụ request website.
+  # Nó chỉ được tạo tạm thời khi chạy:
+  #   docker compose run --rm wpcli <command>
+  #
+  # Các mục đích sử dụng:
+  # - Cài đặt WordPress tự động.
+  # - Cài và kích hoạt WooCommerce.
+  # - Kích hoạt cham-theme và cham-review-bridge.
+  # - Cấu hình permalink, trang Shop, Cart và Checkout.
+  # - Tạo danh mục, sản phẩm và review demo.
+  # - Chạy các script bootstrap/seed lặp lại được.
+  wpcli:
+    image: wordpress:cli-2.11.0-php8.3
+
+    # Ngăn wpcli tự khởi động khi chạy `docker compose up`.
+    # Service chỉ chạy khi chúng ta gọi trực tiếp.
+    profiles:
+      - tools
+
+    # Chỉ chạy WP-CLI sau khi database đã sẵn sàng nhận kết nối.
+    depends_on:
+      db:
+        condition: service_healthy
+
+    environment:
+      # WP-CLI cần HOME có quyền ghi để lưu cache và config tạm thời.
+      HOME: /tmp
+
+      # Dùng service name `db`, không dùng localhost.
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: wp_
+
+    # Tất cả lệnh `wp` được thực hiện tại WordPress document root.
+    working_dir: /var/www/html
+
+    # Dùng chung source với container WordPress.
+    # Nhờ đó WP-CLI nhìn thấy cùng core, theme và plugin.
+    volumes:
+      - ./app:/var/www/html
+
+volumes:
+  db_data:
