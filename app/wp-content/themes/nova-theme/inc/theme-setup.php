@@ -74,6 +74,32 @@ function nova_theme_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'nova_theme_enqueue_assets' );
 
+/**
+ * Load single-product overrides after WooCommerce's own stylesheets.
+ */
+function nova_theme_enqueue_product_assets() {
+	if ( ! function_exists( 'is_product' ) || ! is_product() ) {
+		return;
+	}
+
+	$stylesheet   = get_theme_file_path( '/assets/css/product-v2.css' );
+	$dependencies = array( 'nova-header-footer-v2' );
+
+	foreach ( array( 'woocommerce-layout', 'woocommerce-smallscreen', 'woocommerce-general' ) as $woocommerce_style ) {
+		if ( wp_style_is( $woocommerce_style, 'registered' ) ) {
+			$dependencies[] = $woocommerce_style;
+		}
+	}
+
+	wp_enqueue_style(
+		'nova-product-v2',
+		get_theme_file_uri( '/assets/css/product-v2.css' ),
+		$dependencies,
+		file_exists( $stylesheet ) ? (string) filemtime( $stylesheet ) : NOVA_THEME_VERSION
+	);
+}
+add_action( 'wp_enqueue_scripts', 'nova_theme_enqueue_product_assets', 99 );
+
 function nova_body_classes( $classes ) {
 	$classes[] = 'nova-site';
 	return $classes;

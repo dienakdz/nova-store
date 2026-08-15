@@ -145,10 +145,10 @@ remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_pr
 function nova_product_trust_list() {
 	echo '<div class="nova-product-trust-list" aria-label="' . esc_attr__( 'Cam kết sản phẩm', 'nova-theme' ) . '">';
 	echo '<ul>';
-	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Tiêu chuẩn sản xuất Quốc tế ISO 22000:2018', 'nova-theme' ) . '</span></li>';
-	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Cam kết giá sỉ tốt nhất từ nhà sản xuất', 'nova-theme' ) . '</span></li>';
+	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Đổi trả dễ dàng trong 7 ngày', 'nova-theme' ) . '</span></li>';
+	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Miễn phí giao hàng cho đơn từ 500.000đ', 'nova-theme' ) . '</span></li>';
 	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Thông tin chất liệu và kích thước rõ ràng', 'nova-theme' ) . '</span></li>';
-	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Nguyên liệu nguồn gốc xuất xứ rõ ràng', 'nova-theme' ) . '</span></li>';
+	echo '<li><span class="nova-product-trust-list__icon" aria-hidden="true"></span><span>' . esc_html__( 'Hỗ trợ tư vấn nhanh chóng', 'nova-theme' ) . '</span></li>';
 	echo '</ul>';
 	echo '</div>';
 }
