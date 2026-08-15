@@ -25,8 +25,8 @@ fi
 
 compose=(docker compose --env-file "${ENV_FILE}")
 
-echo "[seed] Khởi động MariaDB và WordPress..."
-"${compose[@]}" up -d --wait --wait-timeout 120 db wordpress
+echo "[seed] Khởi động MariaDB, WordPress và HTTPS proxy..."
+"${compose[@]}" up -d --wait --wait-timeout 120 db wordpress caddy
 
 echo "[seed] Chuẩn bị WP-CLI..."
 "${compose[@]}" build wpcli

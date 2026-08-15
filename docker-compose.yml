@@ -43,14 +43,34 @@ services:
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-1}
+      WP_URL: ${WP_URL:-https://localhost:8443}
       WORDPRESS_CONFIG_EXTRA: |
         define( 'WP_ENVIRONMENT_TYPE', 'local' );
         define( 'WP_DEBUG_LOG', true );
         define( 'WP_DEBUG_DISPLAY', false );
+        define( 'WP_HOME', getenv( 'WP_URL' ) ?: 'https://localhost:8443' );
+        define( 'WP_SITEURL', getenv( 'WP_URL' ) ?: 'https://localhost:8443' );
     volumes:
       - ./app:/var/www/html
+
+  # Caddy nhận HTTPS từ máy host rồi chuyển request HTTP nội bộ tới Apache/WordPress.
+  # `tls internal` tự tạo certificate local; private key chỉ nằm trong Docker volume.
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    depends_on:
+      - wordpress
+    environment:
+      HTTPS_HOST: ${HTTPS_HOST:-localhost}
+      HTTPS_PORT: ${HTTPS_PORT:-8443}
     ports:
+      # Giữ URL HTTP cũ nhưng chuyển nó sang HTTPS thay vì expose Apache trực tiếp.
       - "${WORDPRESS_PORT:-8080}:80"
+      - "${HTTPS_PORT:-8443}:443"
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
 
   # WP-CLI là công cụ quản trị WordPress bằng command line.
   #
@@ -113,3 +133,5 @@ services:
 
 volumes:
   db_data:
+  caddy_data:
+  caddy_config:

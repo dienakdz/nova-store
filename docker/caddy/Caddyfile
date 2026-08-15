@@ -1,0 +1,12 @@
+http://{$HTTPS_HOST:localhost} {
+	# Mọi request HTTP cũ đều được chuyển sang cổng HTTPS public.
+	redir https://{$HTTPS_HOST:localhost}:{$HTTPS_PORT:8443}{uri} permanent
+}
+
+https://{$HTTPS_HOST:localhost} {
+	# Certificate local do Caddy tự cấp và lưu trong volume caddy_data.
+	tls internal
+
+	# Apache/WordPress chỉ nhận HTTP trong Docker network.
+	reverse_proxy wordpress:80
+}

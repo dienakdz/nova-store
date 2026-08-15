@@ -25,8 +25,8 @@ fi
 
 compose=(docker compose --env-file "${ENV_FILE}")
 
-echo "[setup] Khởi động MariaDB và WordPress..."
-"${compose[@]}" up -d --build --wait --wait-timeout 120 db wordpress
+echo "[setup] Khởi động MariaDB, WordPress và HTTPS proxy..."
+"${compose[@]}" up -d --build --wait --wait-timeout 120 db wordpress caddy
 
 for _ in $(seq 1 60); do
 	if [[ -f app/wp-config.php && -f app/wp-includes/version.php ]]; then
