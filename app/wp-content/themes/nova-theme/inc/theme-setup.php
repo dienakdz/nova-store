@@ -43,8 +43,26 @@ function nova_theme_enqueue_assets() {
 		'nova-main',
 		get_template_directory_uri() . '/assets/css/main.css',
 		array( 'nova-fonts' ),
-		NOVA_THEME_VERSION
+		(string) filemtime( get_theme_file_path( '/assets/css/main.css' ) )
 	);
+
+	$header_footer_stylesheet = get_theme_file_path( '/assets/css/header-footer-v2.css' );
+	wp_enqueue_style(
+		'nova-header-footer-v2',
+		get_theme_file_uri( '/assets/css/header-footer-v2.css' ),
+		array( 'nova-main' ),
+		file_exists( $header_footer_stylesheet ) ? (string) filemtime( $header_footer_stylesheet ) : NOVA_THEME_VERSION
+	);
+
+	$catalog_stylesheet = get_theme_file_path( '/assets/css/catalog-v2.css' );
+	if ( file_exists( $catalog_stylesheet ) ) {
+		wp_enqueue_style(
+			'nova-catalog-v2',
+			get_theme_file_uri( '/assets/css/catalog-v2.css' ),
+			array( 'nova-header-footer-v2' ),
+			(string) filemtime( $catalog_stylesheet )
+		);
+	}
 
 	wp_enqueue_script(
 		'nova-main',

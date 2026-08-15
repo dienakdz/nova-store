@@ -16,5 +16,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 
-nova_product_card( $product->get_id() );
+?>
+<li <?php wc_product_class( 'nova-catalog-item', $product ); ?>>
+	<?php nova_product_card( $product->get_id() ); ?>
+</li>
 

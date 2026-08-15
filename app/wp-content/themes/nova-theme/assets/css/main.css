@@ -1,6 +1,6 @@
 :root {
-	--nova-accent: #6d5dfc;
-	--nova-accent-hover: #5545e6;
+	--nova-accent: #1c1c1c;
+	--nova-accent-hover: #4a433d;
 	--nova-ink: #141414;
 	--nova-muted: #6c6c6c;
 	--nova-cream: #f5f4f0;
@@ -534,7 +534,7 @@ textarea {
 }
 
 .fashion-tile {
-	background: linear-gradient(135deg, var(--nova-accent), #8a7ffc);
+	background: linear-gradient(135deg, var(--nova-accent), #82715f);
 }
 
 .accessory-tile {
@@ -1950,7 +1950,7 @@ textarea {
 
 .announcement-inner p strong {
 	margin-right: 10px;
-	color: #b8b0ff;
+	color: #d8c7b5;
 }
 
 .announcement-inner > span {
@@ -1958,7 +1958,7 @@ textarea {
 }
 
 .announcement-hotline:hover {
-	color: #b8b0ff;
+	color: #d8c7b5;
 }
 
 .site-header {
@@ -2365,7 +2365,7 @@ textarea {
 	justify-content: flex-start;
 	border-radius: 0;
 	background: transparent;
-	color: #b8b0ff;
+	color: #d8c7b5;
 	font-size: 12px;
 	letter-spacing: .16em;
 }
@@ -2379,7 +2379,7 @@ textarea {
 }
 
 .about-section {
-	background: #efedff;
+	background: #f1ece5;
 }
 
 .about-grid {

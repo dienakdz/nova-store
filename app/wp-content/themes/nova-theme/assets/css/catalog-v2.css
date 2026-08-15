@@ -1,0 +1,529 @@
+/* Nova Store catalog — minimal editorial styling for WooCommerce archives. */
+
+.nova-catalog-page {
+	padding-top: 56px;
+	padding-bottom: 96px;
+}
+
+.nova-catalog-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(280px, 440px);
+	align-items: end;
+	gap: 40px;
+	padding: 48px 0 42px;
+	border-bottom: 1px solid #dedbd4;
+}
+
+.nova-catalog-eyebrow {
+	grid-column: 1 / -1;
+	margin: 0 0 -18px;
+	color: #76716a;
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+}
+
+.nova-catalog-hero h1 {
+	margin: 0;
+	color: #111;
+	font-size: clamp(42px, 6vw, 76px);
+	font-weight: 600;
+	letter-spacing: -.055em;
+	line-height: .98;
+}
+
+.nova-catalog-description,
+.nova-catalog-description p {
+	margin: 0;
+	color: #65615c;
+	font-size: 14px;
+	line-height: 1.75;
+}
+
+.nova-catalog-categories {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	margin: 0 0 40px;
+	padding: 22px 0 14px;
+	overflow-x: auto;
+	border-bottom: 1px solid #e7e4de;
+	scrollbar-width: none;
+}
+
+.nova-catalog-categories::-webkit-scrollbar {
+	display: none;
+}
+
+.nova-catalog-categories a {
+	position: relative;
+	flex: 0 0 auto;
+	padding: 0 0 8px;
+	color: #716d66;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.nova-catalog-categories a::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	background: #111;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform .25s ease;
+}
+
+.nova-catalog-categories a:hover,
+.nova-catalog-categories a:focus-visible,
+.nova-catalog-categories a.is-active {
+	color: #111;
+}
+
+.nova-catalog-categories a:hover::after,
+.nova-catalog-categories a:focus-visible::after,
+.nova-catalog-categories a.is-active::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+.nova-catalog-page .woocommerce-products-header {
+	display: none;
+}
+
+.nova-catalog-page > .page-title {
+	display: none;
+}
+
+.nova-catalog-page .woocommerce-info {
+	border: 1px solid #ddd7cf;
+	border-top-color: #1c1c1c;
+	border-radius: 0;
+	background: #f6f2ec;
+	color: #4d4842;
+}
+
+.nova-catalog-page .woocommerce-info::before {
+	color: #1c1c1c;
+}
+
+.nova-catalog-page .nova-shop-toolbar {
+	min-height: 44px;
+	margin: 0 0 24px;
+	padding: 0 0 14px;
+	border-bottom: 1px solid #e7e4de;
+}
+
+.nova-catalog-page .woocommerce-result-count {
+	color: #77726b;
+	font-size: 12px;
+	letter-spacing: .02em;
+}
+
+.nova-catalog-page .woocommerce-ordering select {
+	min-height: 38px;
+	padding: 7px 32px 7px 12px;
+	border: 1px solid #d7d3cb;
+	border-radius: 0;
+	background-color: #faf9f6;
+	color: #171717;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.nova-catalog-page .woocommerce-ordering select:hover,
+.nova-catalog-page .woocommerce-ordering select:focus {
+	border-color: #171717;
+	box-shadow: none;
+	outline: none;
+}
+
+.nova-catalog-page.woocommerce ul.products,
+.nova-catalog-page .woocommerce ul.products,
+.nova-catalog-page ul.products {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 42px 18px;
+	margin: 0;
+}
+
+.nova-catalog-page.woocommerce ul.products::before,
+.nova-catalog-page.woocommerce ul.products::after,
+.nova-catalog-page .woocommerce ul.products::before,
+.nova-catalog-page .woocommerce ul.products::after,
+.nova-catalog-page ul.products::before,
+.nova-catalog-page ul.products::after {
+	display: none;
+}
+
+.nova-catalog-page.woocommerce ul.products li.product,
+.nova-catalog-page .woocommerce ul.products li.product,
+.nova-catalog-page ul.products li.product {
+	float: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+.nova-catalog-page .nova-product-card {
+	position: relative;
+	display: block;
+	min-width: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+.nova-catalog-page .nova-product-card-media {
+	position: relative;
+	overflow: hidden;
+	background: #f0ede7;
+}
+
+.nova-catalog-page .product-thumb {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	overflow: hidden;
+	background: #f0ede7;
+}
+
+.nova-catalog-page .product-thumb img {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	object-fit: cover;
+	transition: transform .55s cubic-bezier(.22, .61, .36, 1), opacity .3s ease;
+}
+
+.nova-catalog-page .nova-product-card:hover .product-thumb img {
+	transform: scale(1.025);
+}
+
+.nova-catalog-page .sale-badge {
+	top: 12px;
+	left: 12px;
+	min-width: 0;
+	min-height: 0;
+	padding: 5px 8px;
+	border: 0;
+	border-radius: 0;
+	background: #171717;
+	color: #fff;
+	font-size: 9px;
+	font-weight: 600;
+	letter-spacing: .12em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.nova-catalog-page .product-card-actions {
+	position: absolute;
+	right: 12px;
+	bottom: 12px;
+	left: 12px;
+	display: block;
+	margin: 0;
+	opacity: 0;
+	transform: translateY(8px);
+	transition: opacity .25s ease, transform .25s ease;
+}
+
+.nova-catalog-page .nova-product-card:hover .product-card-actions,
+.nova-catalog-page .nova-product-card:focus-within .product-card-actions {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.nova-catalog-page .product-card-actions .nova-card-quick-add,
+.nova-catalog-page.woocommerce .product-card-actions .nova-card-quick-add {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	min-height: 42px;
+	margin: 0;
+	padding: 0 16px;
+	border: 1px solid #171717;
+	border-radius: 0;
+	background: #171717;
+	color: #fff;
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: .08em;
+	line-height: 1;
+	text-transform: uppercase;
+	box-shadow: none;
+}
+
+.nova-catalog-page .product-card-actions .nova-card-quick-add:hover,
+.nova-catalog-page .product-card-actions .nova-card-quick-add:focus-visible,
+.nova-catalog-page.woocommerce .product-card-actions .nova-card-quick-add:hover {
+	border-color: #35312d;
+	background: #35312d;
+	color: #fff;
+	transform: none;
+	box-shadow: none;
+}
+
+.nova-catalog-page .product-card-actions .added_to_cart {
+	display: block;
+	margin-top: 6px;
+	padding: 8px;
+	background: rgba(255, 255, 255, .96);
+	color: #171717;
+	font-size: 10px;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.nova-catalog-page .product-card-body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 5px 12px;
+	padding: 14px 0 0;
+}
+
+.nova-catalog-page .product-category {
+	grid-column: 1 / -1;
+	color: #8a857e;
+	font-size: 9px;
+	font-weight: 500;
+	letter-spacing: .1em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.nova-catalog-page .product-category a {
+	color: inherit;
+}
+
+.nova-catalog-page .nova-product-card h3 {
+	grid-column: 1;
+	margin: 0;
+	color: #171717;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: -.01em;
+	line-height: 1.45;
+}
+
+.nova-catalog-page .nova-product-card h3 a {
+	color: inherit;
+}
+
+.nova-catalog-page .nova-product-card h3 a:hover,
+.nova-catalog-page .nova-product-card h3 a:focus-visible {
+	color: #5e574e;
+}
+
+.nova-catalog-page .product-price {
+	grid-column: 1;
+	min-height: 0;
+	color: #171717;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.nova-catalog-page .product-price del {
+	margin-right: 5px;
+	color: #9b968f;
+	font-size: 10px;
+	font-weight: 400;
+}
+
+.nova-catalog-page .product-price ins {
+	color: #171717;
+}
+
+.nova-product-swatches {
+	grid-column: 2;
+	grid-row: 2 / span 2;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	gap: 6px;
+	padding-bottom: 2px;
+}
+
+.nova-product-swatch {
+	position: relative;
+	display: block;
+	width: 10px;
+	height: 10px;
+	border: 1px solid rgba(20, 20, 20, .15);
+	border-radius: 50%;
+	background: var(--nova-swatch-color);
+}
+
+.nova-product-swatch.is-active::after {
+	content: "";
+	position: absolute;
+	inset: -3px;
+	border: 1px solid #76716a;
+	border-radius: 50%;
+}
+
+.nova-catalog-page .woocommerce-pagination {
+	margin-top: 58px;
+}
+
+.nova-catalog-page.woocommerce nav.woocommerce-pagination ul,
+.nova-catalog-page .woocommerce nav.woocommerce-pagination ul {
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	border: 0;
+}
+
+.nova-catalog-page.woocommerce nav.woocommerce-pagination ul li,
+.nova-catalog-page .woocommerce nav.woocommerce-pagination ul li {
+	border: 0;
+}
+
+.nova-catalog-page.woocommerce nav.woocommerce-pagination ul li a,
+.nova-catalog-page.woocommerce nav.woocommerce-pagination ul li span,
+.nova-catalog-page .woocommerce nav.woocommerce-pagination ul li a,
+.nova-catalog-page .woocommerce nav.woocommerce-pagination ul li span {
+	display: grid;
+	place-items: center;
+	min-width: 38px;
+	height: 38px;
+	padding: 0;
+	border: 1px solid #dedbd4;
+	background: transparent;
+	color: #49453f;
+	font-size: 12px;
+}
+
+.nova-catalog-page.woocommerce nav.woocommerce-pagination ul li a:hover,
+.nova-catalog-page.woocommerce nav.woocommerce-pagination ul li span.current,
+.nova-catalog-page .woocommerce nav.woocommerce-pagination ul li a:hover,
+.nova-catalog-page .woocommerce nav.woocommerce-pagination ul li span.current {
+	border-color: #171717;
+	background: #171717;
+	color: #fff;
+}
+
+@media (max-width: 1024px) {
+	.nova-catalog-page.woocommerce ul.products,
+	.nova-catalog-page .woocommerce ul.products,
+	.nova-catalog-page ul.products {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 760px) {
+	.nova-catalog-page {
+		padding-top: 20px;
+		padding-bottom: 64px;
+	}
+
+	.nova-catalog-hero {
+		grid-template-columns: 1fr;
+		gap: 18px;
+		padding: 32px 0 28px;
+	}
+
+	.nova-catalog-eyebrow {
+		grid-column: auto;
+		margin: 0;
+	}
+
+	.nova-catalog-hero h1 {
+		font-size: clamp(38px, 13vw, 58px);
+	}
+
+	.nova-catalog-categories {
+		gap: 24px;
+		margin-bottom: 30px;
+	}
+
+	.nova-catalog-page .nova-shop-toolbar {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.nova-catalog-page .woocommerce-ordering,
+	.nova-catalog-page .woocommerce-ordering select {
+		width: 100%;
+	}
+
+	.nova-catalog-page.woocommerce ul.products,
+	.nova-catalog-page .woocommerce ul.products,
+	.nova-catalog-page ul.products {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 34px 12px;
+	}
+
+	.nova-catalog-page .product-card-actions {
+		right: 8px;
+		bottom: 8px;
+		left: 8px;
+		opacity: 1;
+		transform: none;
+	}
+
+	.nova-catalog-page .product-card-actions .nova-card-quick-add,
+	.nova-catalog-page.woocommerce .product-card-actions .nova-card-quick-add {
+		min-height: 38px;
+		padding: 0 11px;
+		font-size: 9px;
+	}
+
+	.nova-catalog-page .product-card-body {
+		grid-template-columns: 1fr;
+		gap: 4px;
+		padding-top: 11px;
+	}
+
+	.nova-catalog-page .nova-product-card h3,
+	.nova-catalog-page .product-price {
+		grid-column: 1;
+	}
+
+	.nova-product-swatches {
+		grid-column: 1;
+		grid-row: auto;
+		justify-content: flex-start;
+		padding: 5px 0 0 3px;
+	}
+}
+
+@media (max-width: 380px) {
+	.nova-catalog-page.woocommerce ul.products,
+	.nova-catalog-page .woocommerce ul.products,
+	.nova-catalog-page ul.products {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (hover: none) {
+	.nova-catalog-page .product-card-actions {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nova-catalog-page .product-thumb img,
+	.nova-catalog-page .product-card-actions,
+	.nova-catalog-categories a::after {
+		transition: none;
+	}
+}

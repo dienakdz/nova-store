@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'NOVA_THEME_VERSION', '1.1.0' );
+define( 'NOVA_THEME_VERSION', '1.2.0' );
 
 $nova_theme_includes = array(
 	'inc/theme-setup.php',
