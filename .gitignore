@@ -16,7 +16,7 @@
 !/app/wp-content/plugins/
 !/app/wp-content/themes/
 
-# Bỏ qua plugin bên thứ ba như WooCommerce; bootstrap sẽ cài lại.
+# Bỏ qua plugin bên thứ ba như WooCommerce; setup sẽ cài lại.
 /app/wp-content/plugins/*
 
 # Chỉ commit plugin do dự án viết.

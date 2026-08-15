@@ -64,9 +64,12 @@ services:
   # - Kích hoạt nova-theme và nova-review-bridge.
   # - Cấu hình permalink, trang Shop, Cart và Checkout.
   # - Tạo danh mục, sản phẩm và review demo.
-  # - Chạy các script bootstrap/seed lặp lại được.
+  # - Chạy các script setup/seed lặp lại được.
   wpcli:
-    image: wordpress:cli-2.11.0-php8.3
+    build:
+      context: ./docker
+      dockerfile: wpcli/Dockerfile
+    image: nova-store-wpcli
 
     # Ngăn wpcli tự khởi động khi chạy `docker compose up`.
     # Service chỉ chạy khi chúng ta gọi trực tiếp.
@@ -81,6 +84,8 @@ services:
     environment:
       # WP-CLI cần HOME có quyền ghi để lưu cache và config tạm thời.
       HOME: /tmp
+      # Chỉ rõ file config để WP-CLI biết Apache đang bật mod_rewrite.
+      WP_CLI_CONFIG_PATH: /etc/wp-cli/config.yml
 
       # Dùng service name `db`, không dùng localhost.
       WORDPRESS_DB_HOST: db:3306
@@ -88,6 +93,13 @@ services:
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_TABLE_PREFIX: wp_
+      WP_URL: ${WP_URL:-http://localhost:8080}
+      WP_TITLE: ${WP_TITLE:-Nova Store}
+      WP_TAGLINE: ${WP_TAGLINE:-Thời trang hiện đại cho phong cách hằng ngày}
+      WP_ADMIN_USER: ${WP_ADMIN_USER:-admin}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:-admin_password}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL:-admin@example.com}
+      WOOCOMMERCE_VERSION: ${WOOCOMMERCE_VERSION:-11.0.1}
 
     # Tất cả lệnh `wp` được thực hiện tại WordPress document root.
     working_dir: /var/www/html
