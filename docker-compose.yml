@@ -108,6 +108,8 @@ services:
     # Nhờ đó WP-CLI nhìn thấy cùng core, theme và plugin.
     volumes:
       - ./app:/var/www/html
+      # Cho phép WP-CLI chạy script seed nằm ngoài WordPress core.
+      - ./scripts:/project/scripts:ro
 
 volumes:
   db_data:
