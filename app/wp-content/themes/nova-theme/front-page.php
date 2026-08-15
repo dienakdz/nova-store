@@ -51,7 +51,22 @@ $feature_items         = nova_feature_items();
 					</div>
 				<?php endif; ?>
 			<?php else : ?>
-				<div class="home-banner" role="img" aria-label="<?php esc_attr_e( 'Banner khuyến mãi', 'nova-theme' ); ?>"></div>
+				<div class="nova-fashion-hero">
+					<div class="fashion-hero-copy">
+						<p class="fashion-hero-kicker"><?php esc_html_e( 'THE NEW EDIT · 2026', 'nova-theme' ); ?></p>
+						<h1><?php esc_html_e( 'Phong cách mới. Phiên bản mới của bạn.', 'nova-theme' ); ?></h1>
+						<p><?php esc_html_e( 'Những thiết kế dễ mặc, dễ phối và đủ khác biệt để đồng hành cùng nhịp sống hiện đại.', 'nova-theme' ); ?></p>
+						<div class="fashion-hero-actions">
+							<a class="nova-btn nova-btn-primary" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Khám phá bộ sưu tập', 'nova-theme' ); ?></a>
+							<a class="fashion-text-link" href="#nova-story"><?php esc_html_e( 'Câu chuyện Nova', 'nova-theme' ); ?></a>
+						</div>
+					</div>
+					<div class="fashion-hero-visual" aria-hidden="true">
+						<span class="fashion-hero-index">01 / NEW EDIT</span>
+						<strong>NOVA</strong>
+						<span class="fashion-hero-season">SPRING · SUMMER 26</span>
+					</div>
+				</div>
 			<?php endif; ?>
 		</div>
 	</section>
@@ -90,8 +105,14 @@ $feature_items         = nova_feature_items();
 		<section class="home-section product-category-section">
 			<div class="nova-container">
 				<div class="empty-products">
-					<p><?php esc_html_e( 'Thêm danh mục và sản phẩm WooCommerce để khu vực này tự hiển thị.', 'nova-theme' ); ?></p>
-					<a class="nova-btn nova-btn-primary" href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product' ) ); ?>"><?php esc_html_e( 'Thêm danh mục', 'nova-theme' ); ?></a>
+					<div>
+						<p class="eyebrow"><?php esc_html_e( 'COMING SOON', 'nova-theme' ); ?></p>
+						<h2><?php esc_html_e( 'Bộ sưu tập đầu tiên đang được hoàn thiện.', 'nova-theme' ); ?></h2>
+						<p><?php esc_html_e( 'Sản phẩm thời trang của Nova Store sẽ sớm xuất hiện tại đây.', 'nova-theme' ); ?></p>
+					</div>
+					<?php if ( current_user_can( 'manage_woocommerce' ) ) : ?>
+						<a class="nova-btn nova-btn-outline" href="<?php echo esc_url( admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product' ) ); ?>"><?php esc_html_e( 'Thêm danh mục', 'nova-theme' ); ?></a>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>
@@ -99,9 +120,9 @@ $feature_items         = nova_feature_items();
 
 	<section class="home-section promise-section">
 		<div class="nova-container promise-grid">
-			<?php foreach ( $feature_items as $item ) : ?>
+			<?php foreach ( $feature_items as $index => $item ) : ?>
 				<div class="promise-item">
-					<div class="promise-icon"><?php echo esc_html( strtoupper( substr( $item['title'], 0, 1 ) ) ); ?></div>
+					<div class="promise-icon"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></div>
 					<h3><?php echo esc_html( $item['title'] ); ?></h3>
 					<p><?php echo esc_html( $item['text'] ); ?></p>
 				</div>
@@ -109,7 +130,7 @@ $feature_items         = nova_feature_items();
 		</div>
 	</section>
 
-	<section class="home-section about-section">
+	<section class="home-section about-section" id="nova-story">
 		<div class="nova-container about-grid">
 			<div>
 				<p class="eyebrow"><?php esc_html_e( 'Về Nova Store', 'nova-theme' ); ?></p>

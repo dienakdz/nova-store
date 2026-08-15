@@ -2,10 +2,10 @@
 	<title id="title">Nova Store</title>
 	<desc id="description">Biểu trưng Nova Store với ngôi sao cách điệu.</desc>
 	<g fill="none" fill-rule="evenodd">
-		<circle cx="58" cy="70" r="42" fill="#5A2F12"/>
+		<circle cx="58" cy="70" r="42" fill="#141414"/>
 		<path d="M58 31c4 22 16 35 36 39-20 4-32 17-36 39-4-22-16-35-36-39 20-4 32-17 36-39Z" fill="#F6E7D5"/>
-		<circle cx="58" cy="70" r="7" fill="#5A2F12"/>
-		<text x="118" y="72" fill="#2D201A" font-family="Be Vietnam Pro, Segoe UI, Arial, sans-serif" font-size="48" font-weight="800" letter-spacing="1">NOVA</text>
-		<text x="121" y="105" fill="#9B633F" font-family="Be Vietnam Pro, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="8">STORE</text>
+		<circle cx="58" cy="70" r="7" fill="#141414"/>
+		<text x="118" y="72" fill="#141414" font-family="Be Vietnam Pro, Segoe UI, Arial, sans-serif" font-size="48" font-weight="800" letter-spacing="1">NOVA</text>
+		<text x="121" y="105" fill="#6D5DFC" font-family="Be Vietnam Pro, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="8">STORE</text>
 	</g>
 </svg>

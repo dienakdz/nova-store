@@ -20,21 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'nova-theme' ); ?></a>
 
 <header class="site-header">
-	<div class="top-bar">
-		<div class="nova-container top-bar-inner">
-			<a class="top-bar-hotline" href="<?php echo esc_url( nova_get_hotline_href() ); ?>">
-				<span class="action-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.7.6 4.1.6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.3 22 2 13.7 2 3.3 2 2.5 2.5 2 3.3 2h3.5C7.5 2 8 2.5 8 3.3c0 1.4.2 2.8.6 4.1.1.4 0 .9-.3 1.2l-2.1 2.2z"/></svg>
-				</span>
-				<span><?php esc_html_e( 'Gọi hotline:', 'nova-theme' ); ?> <?php echo esc_html( nova_get_hotline() ); ?></span>
+	<div class="announcement-bar">
+		<div class="nova-container announcement-inner">
+			<a class="announcement-hotline" href="<?php echo esc_url( nova_get_hotline_href() ); ?>">
+				<?php esc_html_e( 'Hotline', 'nova-theme' ); ?> <?php echo esc_html( nova_get_hotline() ); ?>
 			</a>
-			<a class="top-bar-cart" href="<?php echo esc_url( nova_cart_link() ); ?>" aria-label="<?php esc_attr_e( 'Cart', 'nova-theme' ); ?>">
-				<span class="action-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14h7.4c.8 0 1.5-.4 1.9-1.1L21 4H5.2L4.6 2H1v2h2.1l3.6 11.1c.2.6.8.9 1.4.9H19v-2H7.2z"/></svg>
-				</span>
-				<span><?php esc_html_e( 'Giỏ hàng', 'nova-theme' ); ?></span>
-				<span class="nova-cart-count"><?php echo esc_html( nova_cart_count() ); ?></span>
-			</a>
+			<p><strong><?php esc_html_e( 'NEW SEASON', 'nova-theme' ); ?></strong> <?php esc_html_e( 'Miễn phí vận chuyển cho đơn hàng từ 499K', 'nova-theme' ); ?></p>
+			<span><?php esc_html_e( 'Đổi trả trong 7 ngày', 'nova-theme' ); ?></span>
 		</div>
 	</div>
 
@@ -42,11 +34,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 			<?php nova_site_logo( 'brand-logo' ); ?>
 		</a>
-
-		<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false">
-			<span></span><span></span><span></span>
-			<span class="screen-reader-text"><?php esc_html_e( 'Open menu', 'nova-theme' ); ?></span>
-		</button>
 
 		<nav class="main-nav" id="primary-menu" aria-label="<?php esc_attr_e( 'Primary menu', 'nova-theme' ); ?>">
 			<?php
@@ -62,5 +49,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 			}
 			?>
 		</nav>
+
+		<div class="header-actions">
+			<form class="header-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<label class="screen-reader-text" for="nova-product-search"><?php esc_html_e( 'Tìm sản phẩm', 'nova-theme' ); ?></label>
+				<input id="nova-product-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Tìm kiếm', 'nova-theme' ); ?>">
+				<input type="hidden" name="post_type" value="product">
+				<button type="submit" aria-label="<?php esc_attr_e( 'Tìm kiếm', 'nova-theme' ); ?>">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 20-5.2-5.2a7.5 7.5 0 1 0-1 1L20 21l1-1ZM4.5 10a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z"/></svg>
+				</button>
+			</form>
+			<a class="header-cart" href="<?php echo esc_url( nova_cart_link() ); ?>" aria-label="<?php esc_attr_e( 'Giỏ hàng', 'nova-theme' ); ?>">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM2 3h2.5l2.1 10.5A3 3 0 0 0 9.5 16H18a3 3 0 0 0 2.8-2l1.8-5.5H6.2L5.7 6H2V3Z"/></svg>
+				<span class="nova-cart-count"><?php echo esc_html( nova_cart_count() ); ?></span>
+			</a>
+		</div>
+
+		<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false">
+			<span></span><span></span><span></span>
+			<span class="screen-reader-text"><?php esc_html_e( 'Open menu', 'nova-theme' ); ?></span>
+		</button>
 	</div>
 </header>
