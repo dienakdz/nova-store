@@ -5,13 +5,6 @@
  * @package NovaTheme
  */
 
-wp_enqueue_style(
-	'nova-catalog-v2',
-	get_template_directory_uri() . '/assets/css/catalog-v2.css',
-	array( 'nova-main' ),
-	filemtime( get_template_directory() . '/assets/css/catalog-v2.css' )
-);
-
 get_header();
 
 $is_catalog = is_shop() || is_product_taxonomy() || is_post_type_archive( 'product' );

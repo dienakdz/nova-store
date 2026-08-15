@@ -22,8 +22,8 @@ bash scripts/setup.sh
 bash scripts/seed.sh
 ```
 
-- Storefront: `https://localhost:8443`
-- WordPress Admin: `https://localhost:8443/wp-admin`
+- With the default `.env`, storefront: `https://localhost:8443`
+- With the default `.env`, WordPress Admin: `https://localhost:8443/wp-admin`
 - HTTP requests to `http://localhost:8080` redirect to HTTPS.
 - DBeaver: connect to `localhost:3308` with the database credentials from `.env`.
 
@@ -53,6 +53,8 @@ Then open PowerShell as Administrator in the project directory:
 ```
 
 The script forwards TCP port `8443` from Windows to WSL and creates a Private-profile Windows Firewall rule. WSL's IP address may change after a restart, so run the script again if LAN access stops working. See [docker/caddy/README.md](docker/caddy/README.md) for more details.
+
+After switching `HTTPS_HOST` and `WP_URL` to a LAN IP, use that IP as the canonical site URL. `https://localhost:8443` is not expected to work at the same time with the current single-host Caddy configuration.
 
 ## Retrieve reviews with the WooCommerce REST API
 

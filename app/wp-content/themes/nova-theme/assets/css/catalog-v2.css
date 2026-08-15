@@ -153,12 +153,13 @@
 	margin: 0;
 }
 
-.nova-catalog-page.woocommerce ul.products::before,
-.nova-catalog-page.woocommerce ul.products::after,
-.nova-catalog-page .woocommerce ul.products::before,
-.nova-catalog-page .woocommerce ul.products::after,
+.woocommerce .nova-catalog-page ul.products::before,
+.woocommerce .nova-catalog-page ul.products::after,
+.woocommerce-page .nova-catalog-page ul.products::before,
+.woocommerce-page .nova-catalog-page ul.products::after,
 .nova-catalog-page ul.products::before,
 .nova-catalog-page ul.products::after {
+	content: none;
 	display: none;
 }
 
@@ -249,31 +250,39 @@
 
 .nova-catalog-page .product-card-actions .nova-card-quick-add,
 .nova-catalog-page.woocommerce .product-card-actions .nova-card-quick-add {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center;
+	gap: 8px;
 	width: 100%;
+	height: 42px;
 	min-height: 42px;
 	margin: 0;
-	padding: 0 16px;
+	padding: 0 16px !important;
 	border: 1px solid #171717;
 	border-radius: 0;
-	background: #171717;
-	color: #fff;
+	background: #171717 !important;
+	color: #fff !important;
 	font-size: 10px;
 	font-weight: 600;
 	letter-spacing: .08em;
-	line-height: 1;
+	line-height: 1.2;
 	text-transform: uppercase;
 	box-shadow: none;
+}
+
+.nova-catalog-page .nova-card-quick-add > span {
+	display: inline-flex;
+	align-items: center;
+	line-height: inherit;
 }
 
 .nova-catalog-page .product-card-actions .nova-card-quick-add:hover,
 .nova-catalog-page .product-card-actions .nova-card-quick-add:focus-visible,
 .nova-catalog-page.woocommerce .product-card-actions .nova-card-quick-add:hover {
 	border-color: #35312d;
-	background: #35312d;
-	color: #fff;
+	background: #35312d !important;
+	color: #fff !important;
 	transform: none;
 	box-shadow: none;
 }
@@ -481,8 +490,9 @@
 
 	.nova-catalog-page .product-card-actions .nova-card-quick-add,
 	.nova-catalog-page.woocommerce .product-card-actions .nova-card-quick-add {
+		height: 38px;
 		min-height: 38px;
-		padding: 0 11px;
+		padding: 0 11px !important;
 		font-size: 9px;
 	}
 
