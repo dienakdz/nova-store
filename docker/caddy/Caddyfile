@@ -1,3 +1,8 @@
+{
+	# IP clients may omit SNI; use the configured LAN IP to select its certificate.
+	default_sni {$HTTPS_HOST:localhost}
+}
+
 http://{$HTTPS_HOST:localhost} {
 	# Mọi request HTTP cũ đều được chuyển sang cổng HTTPS public.
 	redir https://{$HTTPS_HOST:localhost}:{$HTTPS_PORT:8443}{uri} permanent

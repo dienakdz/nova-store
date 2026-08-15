@@ -16,6 +16,25 @@ The certificate is issued by Caddy's local CA. For a quick Postman test, turn
 off **Settings > General > SSL certificate verification**. Keep verification
 enabled for real environments using a publicly trusted certificate.
 
+## Access from another machine on the LAN
+
+Set the local `.env` values to the Windows LAN address:
+
+```dotenv
+HTTPS_HOST=192.168.1.10
+WP_URL=https://192.168.1.10:8443
+```
+
+Recreate WordPress and Caddy, then run PowerShell as Administrator:
+
+```powershell
+.\scripts\expose-https-lan.ps1 -LanAddress 192.168.1.10
+```
+
+The script forwards only TCP port `8443` to WSL and creates a Private-profile
+Windows Firewall rule. WSL's IP may change after restart, so run the script
+again when LAN access stops working.
+
 WooCommerce REST API v3 can then use Basic Auth:
 
 ```text
